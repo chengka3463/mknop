@@ -5,6 +5,7 @@ cd lede
 (
     cd package
     git clone https://github.com/tuanqing/install-program package/install-program
+    git clone https://github.com/jerrykuku/luci-theme-argon -b 18.06
     echo "add other app well feeds.conf.default success"
 )
 
@@ -18,6 +19,8 @@ src-git telephony https://git.openwrt.org/feed/telephony.git
 src-git packages https://github.com/coolsnowwolf/packages
 src-git luci https://github.com/coolsnowwolf/luci
 EOF
+
+rm -rf package/lean/luci-theme-argon
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -57,21 +60,18 @@ CONFIG_PACKAGE_luci-app-ttyd=y
 CONFIG_PACKAGE_docker-ce=y
 CONFIG_PACKAGE_luci-app-docker=y
 CONFIG_PACKAGE_luci-app-passwall=y
-CONFIG_PACKAGE_luci-app-cifs-mount=y
 CONFIG_PACKAGE_luci-app-samba4=y
 ## luci theme
 CONFIG_PACKAGE_luci-theme-bootstrap-mod=y
 CONFIG_PACKAGE_luci-theme-netgear=y
+CONFIG_PACKAGE_luci-theme-argon=y
 ## remove
 # CONFIG_PACKAGE_luci-app-arpbind is not set
 # CONFIG_PACKAGE_luci-app-autoreboot is not set
 # CONFIG_PACKAGE_luci-app-vsftpd is not set							   
 # CONFIG_DEFAULT_luci-app-adbyby-plus is not set
 # CONFIG_PACKAGE_luci-app-adbyby-plus is not set
-# CONFIG_UnblockNeteaseMusic_Go is not set
 # CONFIG_UnblockNeteaseMusic_NodeJS is not set
-# CONFIG_PACKAGE_UnblockNeteaseMusic is not set
-# CONFIG_PACKAGE_UnblockNeteaseMusicGo is not set
 # CONFIG_PACKAGE_luci-app-flowoffload is not set
 # CONFIG_PACKAGE_luci-app-ddns is not set
 # CONFIG_PACKAGE_luci-app-wol is not set
@@ -87,6 +87,3 @@ EOF
 
 make defconfig
 cat .config
-
-
-
