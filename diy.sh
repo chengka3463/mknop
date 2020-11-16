@@ -27,8 +27,8 @@ rm -rf package/lean/luci-theme-argon
 
 packages=" \
 kmod-fs-ext4 kmod-fs-vfat kmod-fs-exfat dosfstools e2fsprogs antfs-mount \
-kmod-usb2 kmod-usb3 kmod-usb-storage kmod-usb-storage-extras kmod-usb-storage-uas \
-blkid lsblk parted fdisk cfdisk losetup resize2fs tune2fs pv unzip \
+kmod-usb-uhci kmod-usb2 kmod-usb3 kmod-usb-storage kmod-usb-storage-extras kmod-usb-storage-uas \
+blkid lsblk parted fdisk cfdisk losetup resize2fs tune2fs pv unzip usbutils \
 lscpu htop iperf3 curl lm-sensors install-program 
 "
 
@@ -56,6 +56,7 @@ CONFIG_TARGET_armvirt=y
 CONFIG_TARGET_armvirt_64=y
 CONFIG_TARGET_armvirt_64_Default=y
 ## luci app
+CONFIG_PACKAGE_badblocks=y
 CONFIG_PACKAGE_luci-app-ttyd=y
 CONFIG_PACKAGE_docker-ce=y
 CONFIG_PACKAGE_luci-app-docker=y
@@ -67,7 +68,6 @@ CONFIG_PACKAGE_luci-theme-netgear=y
 CONFIG_PACKAGE_luci-theme-argon=y
 ## remove
 # CONFIG_PACKAGE_luci-app-arpbind is not set
-# CONFIG_PACKAGE_luci-app-autoreboot is not set
 # CONFIG_PACKAGE_luci-app-vsftpd is not set							   
 # CONFIG_DEFAULT_luci-app-adbyby-plus is not set
 # CONFIG_PACKAGE_luci-app-adbyby-plus is not set
