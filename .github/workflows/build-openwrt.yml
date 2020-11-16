@@ -108,19 +108,19 @@ jobs:
     - name: Upload firmware @ kernel 4.18.7
       uses: actions/upload-artifact@main
       with:
-        name: ${{ env.firmware_1 }}
+        name: ${{ env.firmware_ 4.18.7 }}
         path: out/4.18.7
       
     - name: Upload firmware @ kernel 4.19.106
       uses: actions/upload-artifact@main     
       with:
-        name: ${{ env.firmware_2 }}
+        name: ${{ env.firmware_ 4.19.106 }}
         path: out/4.19.106
       
     - name: Upload firmware @ kernel 5.4.43
       uses: actions/upload-artifact@main
       with:
-        name: ${{ env.firmware_3 }}
+        name: ${{ env.firmware_ 5.4.43 }}
         path: out/5.4.43
 
     - name: Upload config file
