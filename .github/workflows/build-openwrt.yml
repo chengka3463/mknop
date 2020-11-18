@@ -29,9 +29,8 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   DIY_SH: diy.sh
-  SSH_ACTIONS: false
-  UPLOAD_FIRMWARE: false
-  UPLOAD_DOCKER: false
+  UPLOAD_FIRMWARE: true
+  UPLOAD_DOCKER: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -128,3 +127,19 @@ jobs:
       with:
         name: config
         path: out/config.seed
+
+    - name: Docker file - copy Docker file
+      run: |
+        cp ${{ env.FIRMWARE }}/* n1   
+             
+    - name: Image - build
+      run: |
+        cd n1
+        sudo bash build.sh
+        
+    - name: Upload - push to artifact file 
+      uses: actions/upload-artifact@main
+      if: env.UPLOAD_DOCKER == 'true' && !cancelled()  
+      with:
+        name: docker-n1
+        path: n1/opt/imgs
